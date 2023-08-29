@@ -1,0 +1,114 @@
+{% load static %}
+{% load menu %}
+<!doctype html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title> engrezi</title>
+        
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+
+    <body style="background-color:#f9f0e1f6;">
+        
+        <style>
+            .dropbtn {
+            background-color: #333;
+            color: rgb(0, 0, 0);
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            }
+
+            /* The container <div> - needed to position the dropdown content */
+            .dropdown {
+            position: relative;
+            display: inline-block;
+            border-radius: 15px;
+            }
+
+            /* Dropdown Content (Hidden by Default) */
+            .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            border-radius: 15px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            }
+
+            /* Links inside the dropdown */
+            .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            border-radius: 15px;
+            text-decoration: none;
+            display: block;
+            }
+
+            /* Change color of dropdown links on hover */
+            .dropdown-content a:hover {background-color: #ddd;}
+
+            /* Show the dropdown menu on hover */
+            .dropdown:hover .dropdown-content {display: block;}
+            
+            /* Change the background color of the dropdown button when the dropdown content is shown */
+            .dropdown:hover .dropbtn {background-color: #3e8e41;}
+        </style>
+        <nav class="mx-auto py-4 px-6 flex items-center justify-between bg-teal-600" style="background-color: rgb(217, 146, 181);">
+            <div class="logo">
+                <a href="/"><img src="data:image/png;base64,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" alt="engrezi" style="width:64px;height:64px;"></a>
+            
+            </div>
+            
+            <div class="menu flex items-center space-x-4">
+                <div class="dropdown" >
+                    <button class="py-2 px-4 bg-teal-800 text-white rounded-xl hover:bg-teal-900">Age-Group</button>
+                    <div class="dropdown-content" style="left:5;">
+                        {% menu %}
+                    </div>
+                </div>
+                <div class="dropdown" >
+                    <button class="py-2 px-4 bg-teal-800 text-white rounded-xl hover:bg-teal-900">Vacant</button>
+                    <div class="dropdown-content" style="left:5;">
+                        {% vacant %}
+                    </div>
+                </div>
+            <a href="{% url 'search' %}" class="py-2 px-4 bg-teal-800 text-white rounded-xl hover:bg-teal-900" style="position:left;">Search</a>  
+            <a href="{% url 'add_batch' %}" class="py-2 px-4 bg-teal-800 text-white rounded-xl hover:bg-teal-900">Add Batch</a>  
+           </div>     
+        </nav>
+
+        <div class="flex flex-wrap">
+            {% for batch in Batches %}
+            <div class="product w-1/1 p-6 py-7">
+                <div class="p-7 rounded-xl bg-gray-300">
+                <a href="{% url 'batch_detail' batch.agegroup.slug batch.slug %}">
+                    
+                    <h2 class="text-xl">{{ batch.batch_name }}</h2>
+                    <p class="text-13 text-black-600">Size: {{ batch.get_batchsize }}</p>
+                    <p class="text-13 text-black-600">Days: {{ batch.days }}</p>
+                    <p class="text-13 text-black-600">Teacher: {{ batch.teachername }}</p>
+                    <p class="text-13 text-black-600">Status: {{ batch.status }}</p>
+                    <p class="bold">Students:</p>
+                    {% if batch.description %}
+                        <pre>{{ batch.description }}</pre>
+                    {% endif %}
+                    <br>
+                    <a href="{% url 'edit_batch' batch.id %}"class="py-2 px-4 bg-teal-800 text-white rounded-xl hover:bg-teal-900">Edit</a>
+                    <br>
+                    </a>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="max-w-7xl mx-auto ">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </body>
+</html>

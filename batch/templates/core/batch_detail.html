@@ -1,0 +1,39 @@
+{% extends 'core/index.html' %}
+
+{% block title %}{{ batch.batch_name }}{% endblock %}
+
+{% block content %}
+<style>
+.card {
+  text-align: center;
+  background: linear-gradient(#1d4bb0, #4c72b4, #1d4bb0);
+  border-radius: 2px;
+  box-shadow: 20px 16px 25px 3px rgba(0,0,0,.3);
+  color: #fff;
+  padding: 30px;
+  border-radius: 25px;
+}
+</style>
+   <div class="card" style="position: relative; top: 20px;" >
+
+        <h1 class="text-2xl"><strong>{{ batch.batch_name }}</strong></h1>
+        <h2 class="text-13 text-black-600"><strong>Size: {{ batch.get_batchsize }}</strong></h2>
+        <pre class="text-13 text-black-600">Days:{{ batch.days }}     ||     Time: {{ batch.timing}}</pre>
+        <h2 class="text-13 text-black-600"><b>Teacher: {{ batch.teachername }}</b></h2>
+        <pre class="text-13 text-black-600">Start Date: {{batch.startdate}}     ||   Age Group: {{batch.agegroup}}</pre>
+        <br>
+        <pre class="text-13 text-black-600"><b>      Status: {{ batch.status }}   ||   Vacancy Status: {{batch.vacancy}}</b></pre>
+        
+        <br>
+        <h2>
+            {% if batch.description %}
+                <pre ><b class="bold">Students: </b>{{ batch.description }}</pre>
+            {% endif %}
+            <br>
+        </h2>
+        
+        <a href="{% url 'edit_batch' batch.id %}"class="py-2 px-4 bg-teal-800 text-white rounded-xl hover:bg-teal-900">Edit</a>
+        
+    
+    </div>
+{% endblock %}

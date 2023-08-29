@@ -1,0 +1,3 @@
+{% for agegroup in agegroups %}
+    <a href="{% url 'agegroup_detail' agegroup.slug %}" class="text-white">{{ agegroup.title }}</a>
+{% endfor %}

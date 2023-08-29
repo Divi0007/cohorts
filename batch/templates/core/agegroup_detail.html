@@ -1,0 +1,44 @@
+{% extends 'core/index.html' %}
+
+{% block title %}{{ Age.title }}{% endblock %}
+
+{% block content %}
+    <style>
+        .box{
+            width: 225px;
+            margin: 30px;
+            padding:10px;
+            background:rgb(223, 212, 212);
+            border-radius: 25px;
+        }
+    </style>
+    <strong class="text-2xl" style="color:rgb(0, 0, 0);">{{ Age.title }}</strong>
+    <div class="flex flex-wrap">
+        {% for batch in Batch %}
+            <div class="product w-1/1 p-0 py-6">
+                <div class="box">
+                <a href="{% url 'batch_detail' batch.agegroup.slug batch.slug %}">
+                    
+                    <h2 class="text-xl"style="position:relative; left:20px;">{{ batch.batch_name }}</h2>
+                    <p class="text-13 text-black-600" style="position:relative; left:20px;">Size: {{ batch.get_batchsize }}</p>
+                    <p class="text-13 text-black-600" style="position:relative; left:20px;">Days: {{ batch.days }}</p>
+                    <p class="text-13 text-black-600" style="position:relative; left:20px;">Time: {{ batch.timing}}</p>
+                    <p class="text-13 text-black-600" style="position:relative; left:20px;">Teacher: {{ batch.teachername }}</p>
+                    <b class="text-13 text-black-600" style="position:relative; left:20px;">Status: {{ batch.status }}</b>
+                    <br>
+                    <b class="bold" style="position:relative; left:20px;">Students:</b>
+                    {% if batch.description %}
+                        <pre style="position:relative; left:20px;">{{ batch.description }}</pre>
+                    {% endif %}
+                    <br>
+                    <a href="{% url 'edit_batch' batch.id %}"class="py-2 px-4 bg-teal-800 text-white rounded-xl hover:bg-teal-900"style="position:relative; left:20px;">Edit</a>
+                    <br>
+                    <br>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+    
+</div>
+        
+{% endblock %}
